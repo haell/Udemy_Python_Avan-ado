@@ -37,32 +37,35 @@ perguntas = [{
 },]
 
 
-
-certas = 0
-erradas = 0
-for pergunta in perguntas:
-    system('cls')
-    print(pergunta['pergunta'])
-    print('Opções:')
-    for indice, opcao in enumerate(pergunta['opcoes']):
-        print(f'{indice+1})  {opcao}')
-    while True:
-        resposta = input("Escolha uma das opções: ")    
-        if resposta in pergunta['opcoes']:
-            if resposta == pergunta['resposta']:
-                print(f"[bold green] Acertou[/bold green]")
-                certas += 1
-                sleep(1)
-                break            
+def programa():
+    certas = 0
+    erradas = 0
+    for pergunta in perguntas:
+        system('cls')
+        print(pergunta['pergunta'])
+        print('Opções:')
+        for indice, opcao in enumerate(pergunta['opcoes']):
+            print(f'{indice+1})  {opcao}')
+        while True:
+            resposta = input("Escolha uma das opções: ")    
+            if resposta in pergunta['opcoes']:
+                if resposta == pergunta['resposta']:
+                    print(f"[bold green] Acertou[/bold green]")
+                    certas += 1
+                    sleep(1)
+                    break            
+                else:
+                    print(f"[bold red] Errou!!![/bold red]")
+                    erradas += 1
+                    sleep(1)
+                    break
             else:
-                print(f"[bold red] Errou!!![/bold red]")
-                erradas += 1
-                sleep(1)
-                break
-        else:
-            print("Opção inválida!")
+                print("Opção inválida!")
 
 
-print(f"De {len(perguntas)} você certou {certas} e errou {erradas}")
+    print(f"De {len(perguntas)} você certou {certas} e errou {erradas}")
 
-#print(perguntas[0]['opcoes'])
+
+
+if __name__ == '__main__':
+    programa()
