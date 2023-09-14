@@ -1,4 +1,4 @@
-# (Parte 1) try e except com else e finally
+# (Parte 2) try e except com else e finally
 
 # a = 18
 # b = 0
