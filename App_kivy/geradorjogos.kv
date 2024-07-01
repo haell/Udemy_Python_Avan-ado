@@ -1,0 +1,125 @@
+<RootLayout>:
+    orientation: 'vertical'
+    padding: 10
+
+    Label:
+        text: "Gerador de Jogos HAELLTEC"
+        font_size: 16
+        bold: True
+        halign: 'center'
+        valign: 'middle'
+        size_hint_y: None
+        height: self.texture_size[1]  # Ajusta a altura para o tamanho do texto
+
+    GridLayout:
+        cols: 4
+        spacing: 10
+
+        Label:
+            size_hint_y: None
+            height: 40
+
+        Label:
+            text: "Quantidade de jogos:"
+            height: 40
+            size_hint_y: None
+
+        GridLayout:
+            cols: 3
+            size_hint: (1, None)
+            height: 40
+
+            Button:
+                text: '-'
+                height: 40
+                size_hint_y: None
+                on_press: root.decrementar_jogos()
+
+            TextInput:
+                id: entry_jogos
+                text: '1'
+                height: 40
+                size_hint_y: None
+                multiline: False
+
+            Button:
+                text: '+'
+                height: 40
+                size_hint_y: None
+                on_press: root.incrementar_jogos()
+
+        Label:
+            size_hint_y: None
+            height: 40
+
+        Label:
+            text: "Escolha um jogo:"
+            height: 40
+            size_hint_y: None
+
+        Spinner:
+            id: combo_opcao
+            text: 'Mega-sena'
+            values: root.regras_jogos_keys
+            height: 40
+            size_hint_y: None
+            on_text: root.atualizar_opcao(self.text)
+
+        Label:
+            size_hint_y: None
+            height: 40
+
+        Label:
+            text: "Escolha o número de dezenas:"
+            height: 40
+            size_hint_y: None
+
+        Spinner:
+            id: combo_dezenas
+            height: 40
+            size_hint_y: None
+
+        Label:
+            size_hint_y: None
+            height: 40
+
+        Label:
+            text: "Números a considerar:"
+            height: 40
+            size_hint_y: None
+
+        TextInput:
+            id: entry_numeros_considerar
+            height: 40
+            size_hint_y: None
+
+        Label:
+            size_hint_y: None
+            height: 40
+
+        Label:
+            text: "Números a desconsiderar:"
+            height: 40
+            size_hint_y: None
+
+        TextInput:
+            id: entry_numeros_desconsiderar
+            height: 40
+            size_hint_y: None
+
+    Button:
+        text: "Gerar Jogos"
+        size_hint_y: None
+        height: 40
+        on_press: root.gerar_jogos()
+
+    ScrollView:
+        size_hint_y: 0.6
+
+        Label:
+            id: resultado_text
+            text: ''
+            halign: 'center'
+            valign: 'top'
+            size_hint_y: None
+            height: self.texture_size[1]
